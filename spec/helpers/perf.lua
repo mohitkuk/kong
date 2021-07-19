@@ -109,9 +109,10 @@ local _M = {
 --- Start the upstream (nginx) with given conf
 -- @function start_upstream
 -- @param conf string the Nginx nginx snippet under server{} context
--- @return nothing. Throws an error if any.
-function _M.start_upstream(conf)
-  return invoke_driver("start_upstream", conf)
+-- @param port_count number number of ports the upstream listens to; default to 1
+-- @return upstream_uri as string or table if port_count is more than 1
+function _M.start_upstream(conf, port_count)
+  return invoke_driver("start_upstream", conf, port_count or 1)
 end
 
 --- Start Kong with given version and conf
