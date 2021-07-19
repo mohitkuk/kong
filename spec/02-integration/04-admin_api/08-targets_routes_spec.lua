@@ -410,16 +410,16 @@ describe("Admin API #" .. strategy, function()
       end)
 
       describe("with healthchecks off", function()
-        it("returns HEALTHCHECKS_OFF for targets that resolve", function()
-          add_targets("127.0.0.1:8%d")
-          local targets = add_targets("custom_localhost:8%d")
-          check_health_endpoint(targets, 8, "HEALTHCHECKS_OFF")
-        end)
-
         it("returns DNS_ERROR if DNS cannot be resolved", function()
           local targets = add_targets("bad-health-target-%d:80")
 
           check_health_endpoint(targets, 4, "DNS_ERROR")
+        end)
+
+        it("returns HEALTHCHECKS_OFF for targets that resolve", function()
+          add_targets("127.0.0.1:8%d")
+          local targets = add_targets("custom_localhost:8%d")
+          check_health_endpoint(targets, 8, "HEALTHCHECKS_OFF")
         end)
       end)
 
