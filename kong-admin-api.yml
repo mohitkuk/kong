@@ -529,7 +529,7 @@ paths:
   /plugins/{plugins}:
     patch:
       description: This method is not available when using DB-less mode.
-  /certificates/{certificates}/snis/{snis}: []
+  /certificates/{certificates}/snis/{snis}: []  /ABC /ABC:
   /plugins/enabled:
     get:
       summary: Retrieve Enabled Plugins
